@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+  <logger name="thread.sample.command" additivity="false">
+   <level value="DEBUG" />
+   <appender-ref ref="CONSOLE" />
+  </logger>
+
+  <logger name="jp.catalu.ec.api.mapper" additivity="false">
+   <level value="DEBUG" />
+   <appender-ref ref="CONSOLE" />
+  </logger>
+
+  <root level="INFO"/>
+</configuration>
