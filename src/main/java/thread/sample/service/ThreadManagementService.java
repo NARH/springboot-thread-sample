@@ -33,10 +33,12 @@ public class ThreadManagementService<E> {
     int loopSize = 10000;
     int fetchSize = 10000;
     int taskLoopSize = 1000;
+    int queueSize = 0;
 
     executorService = Executors.newFixedThreadPool(threadSize);
     while(counter <= loopSize) {
-      addTask(fetchSize, counter);
+      addTask(taskLoopSize * threadSize, counter);
+      queueSize += taskLoopSize  * threadSize;
 
       for(int i = 0; i < fetchSize/taskLoopSize; i++) {
         Future<List<GenericTaskModel<String>>> future = executorService.submit(new Task(queueManager, taskLoopSize));
@@ -80,7 +82,7 @@ public class ThreadManagementService<E> {
         results.add(model);
         count++;
       }
-      log.debug("===> Task {}", results.size());
+      log.info("===> Task {}", results.size());
       return results;
     }
 
