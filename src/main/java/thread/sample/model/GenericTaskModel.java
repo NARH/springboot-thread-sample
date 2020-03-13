@@ -1,5 +1,7 @@
 package thread.sample.model;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -7,4 +9,6 @@ import lombok.RequiredArgsConstructor;
 public class GenericTaskModel<E> {
 
   private final E value;
+
+  private LocalDateTime time;
 }
